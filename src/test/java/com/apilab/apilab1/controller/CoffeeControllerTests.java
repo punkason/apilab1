@@ -39,4 +39,26 @@ public class CoffeeControllerTests {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.content().string(expectedContent));
     }
+
+    @Test
+    public void testCoffeeWithNoParameter() throws Exception {
+//Arrange, Act and Assert chained within the following statements
+
+        String expectedContent = "latte";
+        this.mockMvcController.perform(
+                        MockMvcRequestBuilders.get("/coffee"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedContent));
+    }
+
+    @Test
+    public void testCoffeeWithCappuccino() throws Exception {
+//Arrange, Act and Assert chained within the following statements
+
+        String expectedContent = "cappuccino";
+        this.mockMvcController.perform(
+                        MockMvcRequestBuilders.get("/coffee").param("name", "cappuccino"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.name").value(expectedContent));
+    }
 }
