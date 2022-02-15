@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class CoffeeController {
 
     @GetMapping(value = "/coffeelover")
-    public String home() {
+    public String coffee() {
         return "I like coffee!";
     }
 
